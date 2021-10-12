@@ -1,11 +1,14 @@
 import React from 'react';
-import useFirebase from '../hooks/useFirebase';
+import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
+
 
 import './Login.css'
 
 
 const Login = () => {
-    const {googleLogin} = useFirebase()
+    const {googleLogin} = useAuth()
     return (
         <div className='login-container'>
             <div>
@@ -16,6 +19,7 @@ const Login = () => {
                         <input type="password" placeholder="password"/> <br />
                         <input type="submit" value="Login" />
                     </form>
+                    <p>New to Burj al Arab? <Link to="/register">Create account</Link> </p>
                 </div>
                 <br />
                 <div>--------OR-------</div>
