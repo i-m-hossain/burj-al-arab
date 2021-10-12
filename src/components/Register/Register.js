@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import useGoogleLogin from '../../hooks/useGoogleLogin';
 import useRegister from '../../hooks/useRegister';
 
 
 const Register = () => {
     const { handleGoogleLogin } = useGoogleLogin()
-    const { handleName, handleEmail, handlePassword, handleSubmit } =useRegister()
+    const { handleName, handleEmail, handlePassword, handleSubmit, error } =useRegister()
+
     return (
         <div className='login-container'>
             <div>
@@ -15,7 +17,9 @@ const Register = () => {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="your name" onBlur={handleName}/> <br />
                         <input type="email" placeholder="your email" onBlur={handleEmail}/> <br />
-                        <input type="password" placeholder="password" onBlur={handlePassword}/> <br />
+                        <input type="password" placeholder="password" onBlur={handlePassword}/> 
+                        <p style={{color: 'red'}}>{error}</p>
+                        <br />
                         <input type="submit" value="Register" />
                     </form>
                     <p>Already registered? <Link to="/login">Login here</Link> </p>

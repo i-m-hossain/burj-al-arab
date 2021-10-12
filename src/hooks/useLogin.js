@@ -1,33 +1,29 @@
 import { useState } from "react"
 import useAuth from "./useAuth"
-import useFirebase from "./useFirebase"
 
-const useRegister =()=>{
-    const { passwordRegister, error} =useAuth()
-    const [name, setName] = useState('')
+const useLogin =() =>{
+    const {passwordLogin, error} =useAuth()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const handleName = (e) => {
-        setName(e.target.value)
-    }
-    const handleEmail = (e) =>  {
+    const handleEmail = (e) => {
         setEmail(e.target.value)
+        console.log(e.target.value);
     }
     const handlePassword = (e) => {
         setPassword(e.target.value)
+        console.log(e.target.value);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        passwordRegister(name,email,password)
-        
+        passwordLogin( email, password)
+
     }
-    return{
+    return {
         error,
-        handleName,
-        handleEmail, 
+        handleEmail,
         handlePassword,
         handleSubmit
+
     }
 }
-export default useRegister;
+export default useLogin;
