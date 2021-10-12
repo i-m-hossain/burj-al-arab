@@ -11,6 +11,8 @@ import Book from './components/Book/Book';
 import Header from './components/Header/Header';
 import Register from './components/Register/Register';
 import AuthProvider from './components/Context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Food from './components/Food/Food';
 
 function App() {
   return (
@@ -18,21 +20,24 @@ function App() {
       <AuthProvider>
         <Header />
         <Switch>
-          <Route path="/home">
+          <PrivateRoute path="/home">
             <Home />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
           </Route>
           <Route path="/book/:bedType">
             <Book />
           </Route>
-          <Route exact path="/">
-            <Home />
+          <Route path="/register">
+            <Register></Register>
           </Route>
+          <PrivateRoute exact path="/">
+            <Home />
+          </PrivateRoute>
+          <PrivateRoute path="/foods">
+            <Food></Food>
+          </PrivateRoute>
         </Switch>
       </AuthProvider>
     </Router>
