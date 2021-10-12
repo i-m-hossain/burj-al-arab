@@ -1,7 +1,7 @@
-##React firebase authenticaton and private router
+## React firebase authenticaton and private router
 Live website link: https://burj-al-arab-383cf.web.app/login
 
-###Project outline:
+### Project outline:
     1. Firebase authentication is used
     2. Google sign in authentication applied
     3. Login and registration is enabled using html form
