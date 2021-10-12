@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 
@@ -9,6 +9,18 @@ import './Login.css'
 
 const Login = () => {
     const {googleLogin} = useAuth()
+    const history = useHistory()
+    const location = useLocation();
+    const redirect_uri = location.state?.from || '/home' //if login is came from login page, redirect to home page
+    const handleGoogleLogin =()=>{
+        googleLogin()
+        .then(result=>{
+            history.push(redirect_uri)
+        })
+    }
+    
+    console.log('came from',location.state?.from);
+
     return (
         <div className='login-container'>
             <div>
@@ -24,7 +36,7 @@ const Login = () => {
                 <br />
                 <div>--------OR-------</div>
                 <div className="google-login">
-                    <button onClick={googleLogin}>Login with google</button>
+                    <button onClick={handleGoogleLogin}>Login with google</button>
                 </div>
             </div>
         </div>

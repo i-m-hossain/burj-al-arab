@@ -7,13 +7,8 @@ const useFirebase = () => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const googleLogin = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error=>{
-                console.log(error.message);
-            })
+        return signInWithPopup(auth, googleProvider)
+         
     }
     onAuthStateChanged(auth, (user) => {
         if (user) {
